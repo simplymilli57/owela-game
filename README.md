@@ -1,4 +1,4 @@
-Owela Game
+Owela Game Rules
 
 A digital version of the traditional Owela game for iPhone and Android.
 
