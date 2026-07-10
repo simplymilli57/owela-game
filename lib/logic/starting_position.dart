@@ -7,14 +7,21 @@ class StartingPosition {
     for (int i = 1; i <= 60; i++) {
       int seeds = 0;
 
-      // Temporary setup:
-      // Player 1 holes
-      if (i <= 15) {
+      // Player 1 starting seeds
+      if (i >= 1 && i <= 15) {
         seeds = 2;
       }
 
-      // Player 2 holes
-      if (i >= 46) {
+      if (i >= 16 && i <= 19) {
+        seeds = 2;
+      }
+
+      // Player 2 starting seeds (mirrored)
+      if (i >= 46 && i <= 60) {
+        seeds = 2;
+      }
+
+      if (i >= 42 && i <= 45) {
         seeds = 2;
       }
 
