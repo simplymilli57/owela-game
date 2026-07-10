@@ -5,6 +5,8 @@ class OwelaBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<int> seeds = List.filled(60, 0);
+
     return GridView.builder(
       itemCount: 60,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -19,9 +21,9 @@ class OwelaBoard extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              '${index + 1}',
+              '${seeds[index]}',
               style: const TextStyle(
-                fontSize: 18,
+                fontSize: 20,
               ),
             ),
           ),
