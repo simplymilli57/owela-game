@@ -23,14 +23,41 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   void onHoleTap(int index) {
+  setState(() void onHoleTap(int index) {
   setState(() {
+
+    // Player 1 controls holes 1-30
+    if (currentPlayer == 1 && index >= 30) {
+      return;
+    }
+
+    // Player 2 controls holes 31-60
+    if (currentPlayer == 2 && index < 30) {
+      return;
+    }
+
+    // Cannot play a hole with less than 2 seeds
+    if (seeds[index] < 2) {
+      return;
+    }
 
     int seedsToMove = seeds[index];
 
-    // A player cannot play an empty hole
-    if (seedsToMove == 0) {
-      return;
+    seeds[index] = 0;
+
+    int currentHole = index;
+
+    while (seedsToMove > 0) {
+      currentHole = (currentHole + 1) % 60;
+      seeds[currentHole]++;
+      seedsToMove--;
     }
+
+    // Change player turn
+    currentPlayer = currentPlayer == 1 ? 2 : 1;
+
+  });
+}
 
     seeds[index] = 0;
 
