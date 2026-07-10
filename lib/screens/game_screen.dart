@@ -54,9 +54,20 @@ if (captureRules.canCapture(
   seeds,
   currentPlayer,
 )) {
+
+  int captured = captureRules.captureAmount(
+    sowingEngine.lastLandingHole,
+    seeds,
+  );
+
   seeds = captureRules.capture(
     sowingEngine.lastLandingHole,
     seeds,
+  );
+
+  scoreManager.addScore(
+    currentPlayer,
+    captured,
   );
 }
       // Change player turn
