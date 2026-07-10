@@ -4,6 +4,7 @@ import '../logic/starting_position.dart';
 import '../logic/sowing_engine.dart';
 import '../logic/capture_rules.dart';
 import '../logic/score_manager.dart';
+import '../logic/winner_checker.dart';
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
 
