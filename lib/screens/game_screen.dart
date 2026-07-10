@@ -3,13 +3,9 @@ import '../widgets/owela_board.dart';
 import '../logic/starting_position.dart';
 import '../logic/sowing_engine.dart';
 class GameScreen extends StatefulWidget {
+final SowingEngine sowingEngine = SowingEngine();
   const GameScreen({super.key});
 
-  @override
-  State<GameScreen> createState() => _GameScreenState();
-}
-
-class _GameScreenState extends State<GameScreen> {
 
   late List<int> seeds;
 
@@ -47,10 +43,7 @@ class _GameScreenState extends State<GameScreen> {
 
     int currentHole = index;
 
-    while (seedsToMove > 0) {
-      currentHole = (currentHole + 1) % 60;
-      seeds[currentHole]++;
-      seedsToMove--;
+    final SowingEngine sowingEngine = SowingEngine();
     }
 
     // Change player turn
