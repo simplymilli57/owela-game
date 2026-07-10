@@ -69,8 +69,10 @@ if (captureRules.canCapture(
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Owela Board"),
-      ),
+  title: Text(
+    "P1: ${scoreManager.playerOneScore}  -  P2: ${scoreManager.playerTwoScore}",
+  ),
+),
       body: OwelaBoard(
         seeds: seeds,
         onHoleTap: onHoleTap,
