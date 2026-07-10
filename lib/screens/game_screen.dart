@@ -17,7 +17,7 @@ class _GameScreenState extends State<GameScreen> {
   int currentPlayer = 1;
 
   final SowingEngine sowingEngine = SowingEngine();
-
+final CaptureRules captureRules = CaptureRules();
   @override
   void initState() {
     super.initState();
