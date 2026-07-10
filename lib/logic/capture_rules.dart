@@ -4,21 +4,27 @@ class CaptureRules {
     return (holeIndex + 30) % 60;
   }
 
+  int captureAmount(
+    int landingHole,
+    List<int> seeds,
+  ) {
+    int opposite = oppositeHole(landingHole);
+
+    return seeds[opposite];
+  }
+
   bool canCapture(
     int landingHole,
     List<int> seeds,
     int currentPlayer,
   ) {
 
-    // The landing hole must have seeds
     if (seeds[landingHole] == 0) {
       return false;
     }
 
-    // Find opponent's opposite hole
     int opposite = oppositeHole(landingHole);
 
-    // Opponent must have seeds to capture
     if (seeds[opposite] == 0) {
       return false;
     }
@@ -33,7 +39,6 @@ class CaptureRules {
 
     int opposite = oppositeHole(landingHole);
 
-    // Remove captured seeds
     seeds[opposite] = 0;
 
     return seeds;
