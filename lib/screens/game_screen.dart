@@ -18,7 +18,7 @@ class _GameScreenState extends State<GameScreen> {
 
   int currentPlayer = 1;
 
-  final SowingEngine sowingEngine = SowingEngine();
+final SowingEngine sowingEngine = SowingEngine();
 final CaptureRules captureRules = CaptureRules();
 final ScoreManager scoreManager = ScoreManager();
 final WinnerChecker winnerChecker = WinnerChecker();
