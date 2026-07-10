@@ -47,7 +47,16 @@ final CaptureRules captureRules = CaptureRules();
       }
 
       seeds = sowingEngine.sow(seeds, index);
-
+if (captureRules.canCapture(
+  sowingEngine.lastLandingHole,
+  seeds,
+  currentPlayer,
+)) {
+  seeds = captureRules.capture(
+    sowingEngine.lastLandingHole,
+    seeds,
+  );
+}
       // Change player turn
       currentPlayer = currentPlayer == 1 ? 2 : 1;
 
