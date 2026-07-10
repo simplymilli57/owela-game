@@ -86,10 +86,32 @@ if (captureRules.canCapture(
     "P1: ${scoreManager.playerOneScore}  -  P2: ${scoreManager.playerTwoScore}",
   ),
 ),
-      body: OwelaBoard(
+     body: Column(
+  children: [
+
+    Expanded(
+      child: OwelaBoard(
         seeds: seeds,
         onHoleTap: onHoleTap,
       ),
-    );
-  }
-}
+    ),
+
+    ElevatedButton(
+      onPressed: () {
+
+        String result = winnerChecker.checkWinner(
+          scoreManager.playerOneScore,
+          scoreManager.playerTwoScore,
+        );
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(result),
+          ),
+        );
+
+      },
+      child: const Text("Check Winner"),
+    ),
+  ],
+),
