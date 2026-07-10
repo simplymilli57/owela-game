@@ -1,7 +1,30 @@
 import 'package:flutter/material.dart';
+import '../widgets/owela_board.dart';
+import '../logic/starting_position.dart';
 
-class GameScreen extends StatelessWidget {
+class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
+
+  @override
+  State<GameScreen> createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
+
+  late List<int> seeds;
+
+  @override
+  void initState() {
+    super.initState();
+
+    final board = StartingPosition.createBoard();
+
+    seeds = board.map((hole) => hole.seeds).toList();
+  }
+
+  void onHoleTap(int index) {
+    // Seed movement will be added next
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -9,26 +32,9 @@ class GameScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Owela Board"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "Owela Game Board",
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-            const SizedBox(height: 30),
-
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text("Make Move"),
-            ),
-          ],
-        ),
+      body: OwelaBoard(
+        seeds: seeds,
+        onHoleTap: onHoleTap,
       ),
     );
   }
