@@ -21,6 +21,7 @@ class _GameScreenState extends State<GameScreen> {
   final SowingEngine sowingEngine = SowingEngine();
 final CaptureRules captureRules = CaptureRules();
 final ScoreManager scoreManager = ScoreManager();
+final WinnerChecker winnerChecker = WinnerChecker();
   @override
   void initState() {
     super.initState();
