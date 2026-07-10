@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 import '../widgets/owela_board.dart';
 import '../logic/starting_position.dart';
 import '../logic/sowing_engine.dart';
+
 class GameScreen extends StatefulWidget {
-final SowingEngine sowingEngine = SowingEngine();
   const GameScreen({super.key});
 
+  @override
+  State<GameScreen> createState() => _GameScreenState();
+}
+
+class _GameScreenState extends State<GameScreen> {
 
   late List<int> seeds;
+
+  int currentPlayer = 1;
+
+  final SowingEngine sowingEngine = SowingEngine();
 
   @override
   void initState() {
@@ -19,53 +28,31 @@ final SowingEngine sowingEngine = SowingEngine();
   }
 
   void onHoleTap(int index) {
-  setState(() void onHoleTap(int index) {
-  setState(() {
 
-    // Player 1 controls holes 1-30
-    if (currentPlayer == 1 && index >= 30) {
-      return;
-    }
+    setState(() {
 
-    // Player 2 controls holes 31-60
-    if (currentPlayer == 2 && index < 30) {
-      return;
-    }
+      // Player 1 plays holes 1-30
+      if (currentPlayer == 1 && index >= 30) {
+        return;
+      }
 
-    // Cannot play a hole with less than 2 seeds
-    if (seeds[index] < 2) {
-      return;
-    }
+      // Player 2 plays holes 31-60
+      if (currentPlayer == 2 && index < 30) {
+        return;
+      }
 
-    int seedsToMove = seeds[index];
+      // Cannot play empty or single seed holes
+      if (seeds[index] < 2) {
+        return;
+      }
 
-    seeds[index] = 0;
+      seeds = sowingEngine.sow(seeds, index);
 
-    int currentHole = index;
+      // Change player turn
+      currentPlayer = currentPlayer == 1 ? 2 : 1;
 
-    final SowingEngine sowingEngine = SowingEngine();
-    }
-
-    // Change player turn
-    currentPlayer = currentPlayer == 1 ? 2 : 1;
-
-  });
-}
-
-    seeds[index] = 0;
-
-    int currentHole = index;
-
-    while (seedsToMove > 0) {
-      currentHole = (currentHole + 1) % 60;
-
-      seeds[currentHole]++;
-
-      seedsToMove--;
-    }
-
-  });
-}
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
